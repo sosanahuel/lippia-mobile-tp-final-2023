@@ -26,8 +26,9 @@ public class HomeClockifySteps {
     }
 
     @Then("the user checks their saved project (.*)")
-    public void the_user_checks_their_saved_project_text(String text) {
+    public void the_user_checks_their_saved_project_text(String text) throws InterruptedException {
         HomeService.validarSave(text);
+        Thread.sleep(2000);
     }
 
     @Then("the user checks their unsaved project (.*)")

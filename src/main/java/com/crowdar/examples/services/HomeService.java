@@ -39,10 +39,13 @@ public class HomeService extends MobileActionManager {
     public static void validarSave(String text) {
         MobileActionManager.waitClickable(HomeConstants.PLUS_BUTTON);
         List<WebElement> description = MobileActionManager.getElements(HomeConstants.DESCRIPTION_BUTTON);
+        boolean flag = false;
         for(WebElement descriptionIndiv: description){
-            Assert.assertEquals(descriptionIndiv.getText().toLowerCase(), text.toLowerCase());
+            if (descriptionIndiv.getText().equalsIgnoreCase(text)) flag = true;
         }
+        Assert.assertTrue(flag,"Time entry does not created correctly");
     }
+
     public static void validateNoSave(String texto) {
         MobileActionManager.waitVisibility(HomeConstants.ALL_TIME_ENTRIES);
         List<WebElement> timeEntriesList = MobileActionManager.getElements(HomeConstants.ALL_TIME_ENTRIES);
